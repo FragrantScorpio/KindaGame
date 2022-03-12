@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    
     public void LowSettings()
     {
         QualitySettings.SetQualityLevel(0, true);
+        print("bruh");
     }
     public void MiddleSettings()
     {

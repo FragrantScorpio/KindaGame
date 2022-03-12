@@ -28,8 +28,10 @@ public class CarAudio : MonoBehaviour
     private AudioSource m_HighDecel;
     public AudioSource m_MaxRPM, RadioSource;
     public InputManager im;
+    private int r = 0;
+    private bool RadioSwitch = false;
     private float accFade = 0;
-    private float acceleration;
+    private float acceleration, RadioStartTime;
     [Header("Music")]
     public Object[] RadioClips;
     [Header("Pitch")]
@@ -59,7 +61,8 @@ public class CarAudio : MonoBehaviour
     {
         RadioClips = Resources.LoadAll("Music", typeof(AudioClip));
         Shuffle(RadioClips);
-        RadioSource = SetUpRadio(RadioClips[0] as AudioClip);
+        RadioSource = SetUpRadio(RadioClips[r] as AudioClip);
+
         CC = GameObject.FindGameObjectWithTag("PlayerCarera").GetComponent<CarContoller>();
         FPScript = GameObject.FindGameObjectWithTag("PlayerCam").GetComponent<FPCamera>();
         m_LowAccel = SetUpEngineAudioSource(lowAccelClip);
@@ -76,7 +79,37 @@ public class CarAudio : MonoBehaviour
 
 
     }
-   
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            RadioSwitch = !RadioSwitch;
+            switch (RadioSwitch)
+            {
+                case false:
+                    RadioSource.Stop();
+                    break;
+                case true:
+                    RadioSource.Play();
+                    RadioStartTime = Time.time;
+                    print("Current playing " + RadioSource.clip.length);
+                    
+                    break;
+            }
+        }
+        if ((Time.time - RadioStartTime) == RadioSource.clip.length || Input.GetKeyDown(KeyCode.K)) 
+        { r++;
+            print("Track over... changing clip");
+            RadioSource.Stop();
+            RadioSource.clip = RadioClips[r] as AudioClip; 
+            RadioStartTime = Time.time;
+            RadioSource.Play();
+            if (r == RadioClips.Length) 
+
+            { r = 0; } 
+        };
+        
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -86,7 +119,8 @@ public class CarAudio : MonoBehaviour
             else acceleration = 0;
             accFade = Mathf.Lerp(accFade, Mathf.Abs(acceleration), 15 * Time.deltaTime);
             CarPitch = (CC.engineRpm + 100) / 3200;
-
+           
+            
 
             float pitch = ULerp(lowPitchMin, lowPitchMax, CC.engineRpm / CC.maxRpm);
             pitch = Mathf.Min(lowPitchMax, pitch);
@@ -134,10 +168,10 @@ public class CarAudio : MonoBehaviour
     {
         AudioSource source = gameObject.AddComponent<AudioSource>();
         source.clip = clip;
-        source.loop = true;
-        source.volume = 0.2f;
+        source.priority = 0;
+        source.volume = 1f;
         source.dopplerLevel = 0;
-        source.Play();
+       
         source.minDistance = 5;
         source.maxDistance = 500;
         return source;

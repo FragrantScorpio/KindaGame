@@ -28,9 +28,9 @@ public class CarCamera : MonoBehaviour
     {
 
         cameraPos = new Vector2[3];
-        cameraPos[0] = new Vector2(6f, 0f);
-        cameraPos[1] = new Vector2(8f, 0.5f);
-        cameraPos[2] = new Vector2(10f, 0.5f);
+        cameraPos[0] = new Vector2(8f, 0f);
+        cameraPos[1] = new Vector2(10f, 0.5f);
+        cameraPos[2] = new Vector2(14f, 1f);
 
 
 

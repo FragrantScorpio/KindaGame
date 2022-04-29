@@ -53,44 +53,50 @@
     <UnityVersion>2020.3.26f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\RoadArchitect\GSDRoadMeshSplinate.cs" />
     <Compile Include="Assets\4.Models\DLC\rpg animations\scripts\CameraController.cs" />
+    <Compile Include="Assets\RoadArchitect\GSDRoadUtilityT.cs" />
+    <Compile Include="Assets\SoundManager\Assets\SoundManager\Examples\Demo.cs" />
+    <Compile Include="Assets\SoundManager\Assets\SoundManager\SoundManagerSettings.cs" />
     <Compile Include="Assets\4.Models\DLC\rpg animations\scripts\WorldInteraction.cs" />
     <Compile Include="Assets\2.Scripts\CarCamera.cs" />
+    <Compile Include="Assets\RoadArchitect\GSDRoadAutomation.cs" />
     <Compile Include="Assets\2.Scripts\InputManager.cs" />
     <Compile Include="Assets\2.Scripts\cARui.cs" />
     <Compile Include="Assets\2.Scripts\MainMenu.cs" />
+    <Compile Include="Assets\RoadArchitect\GSDRoadUtilityEditor.cs" />
     <Compile Include="Assets\4.Models\DLC\rpg animations\scripts\HidingMachineBehaviour.cs" />
+    <Compile Include="Assets\RoadArchitect\GSDUnitTests.cs" />
+    <Compile Include="Assets\RoadArchitect\GSDRigidBody.cs" />
     <Compile Include="Assets\2.Scripts\DestructionController.cs" />
+    <Compile Include="Assets\RoadArchitect\Spline\GSDSplineF.cs" />
     <Compile Include="Assets\4.Models\DLC\rpg animations\scripts\HiderInTime.cs" />
     <Compile Include="Assets\4.Models\DLC\rpg animations\scripts\UI_sword.cs" />
+    <Compile Include="Assets\RoadArchitect\GSDRootUtil.cs" />
     <Compile Include="Assets\4.Models\DLC\rpg animations\scripts\ScrollSwitcher.cs" />
+    <Compile Include="Assets\RoadArchitect\GSDRoadUtility.cs" />
+    <Compile Include="Assets\RoadArchitect\GSDRoad.cs" />
+    <Compile Include="Assets\RoadArchitect\GSDTerrain.cs" />
     <Compile Include="Assets\2.Scripts\SEF_Equalizer.cs" />
+    <Compile Include="Assets\RoadArchitect\GSDTrafficLightController.cs" />
     <Compile Include="Assets\2.Scripts\CarAudio.cs" />
     <Compile Include="Assets\2.Scripts\FPCamera.cs" />
     <Compile Include="Assets\4.Models\DLC\rpg animations\scripts\WeaponHide.cs" />
+    <Compile Include="Assets\SoundManager\Assets\SoundManager\SoundManagerComponent.cs" />
+    <Compile Include="Assets\RoadArchitect\GSDRoadEdgeObjects.cs" />
     <Compile Include="Assets\2.Scripts\FirstPersonController.cs" />
     <Compile Include="Assets\2.Scripts\CarContoller.cs" />
     <Compile Include="Assets\2.Scripts\AntiRollBar.cs" />
-    <Compile Include="Assets\2.Scripts\AnimatorController.cs" />
-    <Compile Include="Assets\4.Models\DLC\rpg animations\scripts\UI_no_weapon.cs" />
-    <Compile Include="Assets\RoadArchitect\Spline\GSDSplineF.cs" />
-    <Compile Include="Assets\RoadArchitect\Spline\GSDSplineC.cs" />
     <Compile Include="Assets\RoadArchitect\Spline\GSDSplineN.cs" />
-    <Compile Include="Assets\RoadArchitect\Spline\GSDSplineI.cs" />
-    <Compile Include="Assets\RoadArchitect\GSDUnitTests.cs" />
-    <Compile Include="Assets\RoadArchitect\GSDRigidBody.cs" />
-    <Compile Include="Assets\RoadArchitect\GSDTrafficLightController.cs" />
-    <Compile Include="Assets\RoadArchitect\GSDRoadUtilityT.cs" />
-    <Compile Include="Assets\RoadArchitect\GSDRootUtil.cs" />
-    <Compile Include="Assets\RoadArchitect\GSDRoadEdgeObjects.cs" />
+    <Compile Include="Assets\2.Scripts\AnimatorController.cs" />
     <Compile Include="Assets\RoadArchitect\GSDRoadSystem.cs" />
-    <Compile Include="Assets\RoadArchitect\GSDRoadAutomation.cs" />
-    <Compile Include="Assets\RoadArchitect\GSDRoadUtility.cs" />
+    <Compile Include="Assets\RoadArchitect\Spline\GSDSplineI.cs" />
+    <Compile Include="Assets\SoundManager\Assets\SoundManager\SoundManager.cs" />
+    <Compile Include="Assets\SoundManager\Assets\SoundManager\SMSound.cs" />
+    <Compile Include="Assets\RoadArchitect\Spline\GSDSplineC.cs" />
+    <Compile Include="Assets\4.Models\DLC\rpg animations\scripts\UI_no_weapon.cs" />
     <Compile Include="Assets\RoadArchitect\GSDRoadIntersection.cs" />
-    <Compile Include="Assets\RoadArchitect\GSDRoad.cs" />
-    <Compile Include="Assets\RoadArchitect\GSDRoadUtilityEditor.cs" />
-    <Compile Include="Assets\RoadArchitect\GSDTerrain.cs" />
-    <Compile Include="Assets\RoadArchitect\GSDRoadMeshSplinate.cs" />
+    <Compile Include="Assets\2.Scripts\DamagedPart.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\4.Models\DLC\Free Low Poly Desert Pack\Materials\Shaders\Vertex_Color_Unlit.shader" />
@@ -112,7 +118,9 @@
     <None Include="Assets\RoadArchitect\Shaders\GSDTransparentWithShadowsZ.shader" />
     <None Include="Assets\4.Models\DLC\BrokenVector\LowPolyTreePack\README.txt" />
     <None Include="Assets\RoadArchitect\Shaders\GSDRoadShader.shader" />
+    <None Include="Assets\SoundManager\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\BrokenVector\FastGrid\readme.txt" />
+    <None Include="Assets\SoundManager\Assets\SoundManager\Docs\readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

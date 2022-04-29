@@ -72,8 +72,8 @@ public class CarAudio : MonoBehaviour
         m_MaxRPM = SetUpEngineAudioSource(MaxRPMclip);
         changeGearAudio = SetUpEngineAudioSource(changeGearClip);
         changeGearAudio.loop = false;
-        
-
+        im = this.gameObject.GetComponent<InputManager>();
+       
 
 
 
@@ -81,6 +81,7 @@ public class CarAudio : MonoBehaviour
     }
     private void Update()
     {
+        this.gameObject.transform.position = ASource.transform.position;
         if (Input.GetKeyDown(KeyCode.B))
         {
             RadioSwitch = !RadioSwitch;
@@ -102,11 +103,10 @@ public class CarAudio : MonoBehaviour
             print("Track over... changing clip");
             RadioSource.Stop();
             RadioSource.clip = RadioClips[r] as AudioClip; 
-            RadioStartTime = Time.time;
+           
             RadioSource.Play();
-            if (r == RadioClips.Length) 
-
-            { r = 0; } 
+            if (r == RadioClips.Length) { r = 0; }
+            RadioStartTime = Time.time;
         };
         
     }
@@ -117,6 +117,8 @@ public class CarAudio : MonoBehaviour
             if (im.throttle > 0)
                 acceleration = 1;
             else acceleration = 0;
+        }
+        else acceleration = 0;
             accFade = Mathf.Lerp(accFade, Mathf.Abs(acceleration), 15 * Time.deltaTime);
             CarPitch = (CC.engineRpm + 100) / 3200;
            
@@ -142,7 +144,8 @@ public class CarAudio : MonoBehaviour
             m_HighAccel.volume = (highFade * accFade) ;
             m_HighDecel.volume = (highFade * decFade) ;
             m_MaxRPM.volume = 0;
-        }
+        
+        
         
         
        
@@ -151,7 +154,7 @@ public class CarAudio : MonoBehaviour
     }
     private AudioSource SetUpEngineAudioSource(AudioClip clip)
     {
-        AudioSource source = gameObject.AddComponent<AudioSource>();
+        AudioSource source = this.gameObject.AddComponent<AudioSource>();
         source.clip = clip;
         source.volume = 0;
         source.spatialBlend = 1;
@@ -159,14 +162,14 @@ public class CarAudio : MonoBehaviour
         source.dopplerLevel = 0;
         source.time = Random.Range(0f, clip.length);
         source.Play();
-        source.minDistance = 5;
-        source.maxDistance = 500;
+        source.minDistance = 1;
+        source.maxDistance = 20;
         return source;
     }
    
     private AudioSource SetUpRadio(AudioClip clip)
     {
-        AudioSource source = gameObject.AddComponent<AudioSource>();
+        AudioSource source = this.gameObject.AddComponent<AudioSource>();
         source.clip = clip;
         source.priority = 0;
         source.volume = 1f;

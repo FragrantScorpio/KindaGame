@@ -79,7 +79,7 @@ public class CarCamera : MonoBehaviour
     {
         bandEffect = (CC.speed < 400) ? 300 - (CC.speed / 400) : 200;
 
-        //camera.fieldOfView = fieldOfView;
+        Camera.fieldOfView = fieldOfView + CC.speed /10;
 
         newPos = target.position - (target.forward * cameraPos[DriveCamMode].x) + (target.up * cameraPos[DriveCamMode].y);
         Camera.transform.position = newPos * (1 - smoothTime) + (transform.position * smoothTime);

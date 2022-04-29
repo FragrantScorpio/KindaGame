@@ -21,10 +21,10 @@ TagManager:
   - Car
   - Water
   - UI
-  - PhysicsIgnoreItem1
-  - PhysicsIgnoreItem2
-  - Ground
+  - Wheels
   - 
+  - Ground
+  - Bodyparts
   - 
   - 
   - 

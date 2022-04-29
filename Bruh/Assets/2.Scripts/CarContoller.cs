@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(InputManager))]
-[RequireComponent(typeof(Rigidbody))]
 public class CarContoller : MonoBehaviour
 {
     [Range(0.2f, 0.8f)] public float EngineSmoothTime;
@@ -38,17 +36,14 @@ public class CarContoller : MonoBehaviour
 
         rb.centerOfMass = CenterOfMass.transform.localPosition;
         FPC = GameObject.FindGameObjectWithTag("PlayerCam").GetComponent<FPCamera>();
-        
+        im = this.gameObject.GetComponent<InputManager>();
 
     }
     void Update()
     {
         
 
-        if (rb.gameObject.transform.rotation.z < -90)
-        {
-            print("ай блять");
-        }
+        
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -70,7 +65,7 @@ public class CarContoller : MonoBehaviour
     IEnumerator AccelerationCheck()
     {
         firstFrame = speed;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         secondFrame = speed;
         acceleration = secondFrame - firstFrame;
 
@@ -244,8 +239,9 @@ public class CarContoller : MonoBehaviour
             if (engineRpm < maxRpm && engineRpm > 0) 
             {
                 if (im.throttle > 0 && speed <changeGearSpeed*gearNum || engineRpm < maxRpm/2) { engineRpm += 1500 * Gear[gearNum] * Mathf.Abs(acceleration) * Time.deltaTime; }
-                engineRpm += 500 * Gear[gearNum] * acceleration * Time.deltaTime;
-                if (im.throttle == 0 && speed < changeGearSpeed*gearNum) { engineRpm -= 400 * Time.deltaTime; }
+                engineRpm += 300 * Gear[gearNum] * acceleration * Time.deltaTime;
+                if (im.throttle == 0 && speed < changeGearSpeed*gearNum) { engineRpm -= 500 * Time.deltaTime; }
+                if (im.throttle == 1 && acceleration < 0) { engineRpm += 5000 * Time.deltaTime; }
             }
             
             if (engineRpm > maxRpm) { engineRpm = maxRpm - 300; }
